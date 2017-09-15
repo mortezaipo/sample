@@ -223,11 +223,11 @@ class SampleCmd:
             elif cf["CONTENT INFO"]["site_content_type"] == "json":
                 parsed_data = parse_json_content(raw_data.content, title_p, command_p, description_p, limit)
 
-            random.shuffle(parsed_data)
-
             if not parsed_data:
                 # There is no data
                 continue
+
+            random.shuffle(parsed_data)
 
             for res in parsed_data:
                 Out.show("  {}".format(res[0]))
