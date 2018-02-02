@@ -1,1 +1,3 @@
 include sites/*.ini
+include README.md
+include LICENSE
