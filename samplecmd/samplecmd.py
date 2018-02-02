@@ -272,8 +272,8 @@ class SampleCMD:
         self._config = ConfigParser()
 
         # standard sites
-        standard_sites = \
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "sites")
+        file_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        standard_sites = os.path.join(file_path, "sites")
         self._sites.extend(glob(os.path.join(standard_sites, "*.ini")))
 
         # user's sites
@@ -443,31 +443,14 @@ class SampleCMD:
         return random.sample(result, limit_result)
 
 
-def main(args: list) -> None:
+def main() -> None:
     """Main start function.
-
-    :param list args: user command line arguments
 
     :return: None
     :rtype: None
     """
-    show_description = True if '-d' in args else False
-    show_resources = True if '-r' in args else False
-    # more_info = True if '-m' in args else False
-
-    try:
-        limit_index = int(args.index('-l'))
-        limit_result = int(args[limit_index + 1]) + 1
-    except ValueError:  # -l not found in user arguments
-        limit_result = 6
-
-    keyword = args[-1]
-    SampleCMD().fetch_and_print(keyword, show_description,
-                                show_resources, limit_result)
-
-
-# start point
-if __name__ == "__main__":
+    args = sys.argv[1:]
+    print(args)
     ap = argparse.ArgumentParser(description="Sample Command Finder")
     ap.add_argument('string',
                     metavar="C",
@@ -489,5 +472,18 @@ if __name__ == "__main__":
                     default="5",
                     type=int,
                     help="Limit the result (default is 5)")
-    args = ap.parse_args()
-    main(sys.argv[1:])
+    ap.parse_args()
+
+    show_description = True if '-d' in args else False
+    show_resources = True if '-r' in args else False
+    # more_info = True if '-m' in args else False
+
+    try:
+        limit_index = int(args.index('-l'))
+        limit_result = int(args[limit_index + 1]) + 1
+    except (ValueError, AttributeError):  # -l not found in user arguments
+        limit_result = 6
+
+    keyword = args[0]
+    SampleCMD().fetch_and_print(keyword, show_description,
+                                show_resources, limit_result)
