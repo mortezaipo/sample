@@ -99,3 +99,8 @@ description =
 ```
 
 > **NOTE:** if your sites returns HTML, then fill `CONTENT PATTERN` section with xpath format, otherwise if it returns JSON, then fill this section with JSON key names.
+
+
+### Contribute
+If you know a website or a service which provide sample commands, kindly keep me in touch, I will update 
+the source links, or you could create your source link configuation file and send me a pull request.
