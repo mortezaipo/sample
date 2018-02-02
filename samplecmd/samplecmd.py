@@ -282,12 +282,13 @@ class SampleCMD:
             self._sites.extend(glob(os.path.join(user_sites, "*.ini")))
 
     def fetch_and_print(self, keyword: str, show_description: bool,
-                        show_resources: bool, limit_result: int = 5) -> None:
+                        show_source_links: bool,
+                        limit_result: int = 5) -> None:
         """Try to find commands based on user's args.
 
         :param str keyword: search keyword
         :param bool show_description: show command description
-        :param bool show_resources: show command resource
+        :param bool show_source_links: show commands source links
         :param int limit_result: limit results
 
         :return: prepared commands
@@ -304,7 +305,7 @@ class SampleCMD:
             Out.green("   {}".format(cmd_obj.command))
             if show_description and cmd_obj.command_description:
                 Out.blue("   {}".format(cmd_obj.command_description))
-            if show_resources:
+            if show_source_links:
                 Out.cyan("   {} <{}>".format(cmd_obj.site_name,
                                              cmd_obj.site_url))
 
@@ -450,7 +451,6 @@ def main() -> None:
     :rtype: None
     """
     args = sys.argv[1:]
-    print(args)
     ap = argparse.ArgumentParser(description="Sample Command Finder")
     ap.add_argument('string',
                     metavar="C",
@@ -464,7 +464,7 @@ def main() -> None:
     #                 help="Show more info about commands")
     ap.add_argument('-r',
                     action="store_true",
-                    help="Show commands resources")
+                    help="Show commands source links")
     ap.add_argument('--version',
                     action="store_true",
                     help="Show version")
@@ -475,7 +475,7 @@ def main() -> None:
     ap.parse_args()
 
     show_description = True if '-d' in args else False
-    show_resources = True if '-r' in args else False
+    show_source_links = True if '-r' in args else False
     # more_info = True if '-m' in args else False
 
     try:
@@ -486,4 +486,4 @@ def main() -> None:
 
     keyword = args[0]
     SampleCMD().fetch_and_print(keyword, show_description,
-                                show_resources, limit_result)
+                                show_source_links, limit_result)
