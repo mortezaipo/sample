@@ -485,5 +485,9 @@ def main() -> None:
         limit_result = 6
 
     keyword = args[0]
-    SampleCMD().fetch_and_print(keyword, show_description,
-                                show_source_links, limit_result)
+    try:
+        SampleCMD().fetch_and_print(keyword, show_description,
+                                    show_source_links, limit_result)
+    except KeyboardInterrupt:
+        Out.show("Goodbye")
+        sys.exit(0)
