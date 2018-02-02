@@ -167,9 +167,10 @@ class HTMLParser:
             if section_title and section_command:
                 if section_description:
                     section_description = [d.text for d in section_description]
-                    result.append((section_title[0].text,
-                                   section_command[0].text,
-                                   "\n   ".join(map(str, section_description))))
+                    result.append(
+                        (section_title[0].text,
+                         section_command[0].text,
+                         "\n   ".join(map(str, section_description))))
                 else:
                     result.append((section_title[0].text,
                                    section_command[0].text, ""))
