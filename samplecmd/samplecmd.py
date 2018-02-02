@@ -272,7 +272,7 @@ class SampleCMD:
         self._config = ConfigParser()
 
         # standard sites
-        file_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        file_path = os.path.dirname(os.path.abspath(__file__))
         standard_sites = os.path.join(file_path, "sites")
         self._sites.extend(glob(os.path.join(standard_sites, "*.ini")))
 
