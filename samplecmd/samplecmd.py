@@ -25,6 +25,8 @@ import sys
 import argparse
 import random
 import json
+import base64
+import re
 from glob import glob
 from json.decoder import JSONDecodeError
 from configparser import ConfigParser, MissingSectionHeaderError, ParsingError
@@ -118,6 +120,21 @@ class Out:
         :rtype: None
         """
         print(Color(TERM_COLORS["cyan"].format(msg)), end=end)
+
+
+class Utils:
+    """Extra utils for url builder."""
+
+    @staticmethod
+    def base64(data):
+        """Encode data to base64.
+
+        :param str data: input data
+
+        :return: encoded data
+        :rtype: str
+        """
+        return base64.b64encode(data.encode()).decode()
 
 
 class HTMLParser:
@@ -384,6 +401,24 @@ class SampleCMD:
             elif self._config["CONTENT INFO"]["site_content_type"] == "html":
                 headers.update({"content-type": "text/html"})
 
+            # url method calling
+            methods = re.findall("\/(([a-zAZ0-9\_]+)\([a-zA-Z0-9\{\}]+\))\/",
+                                 search_url)
+            if methods:
+                is_url_valid = True
+                for m in methods:
+                    method_name = m[1]
+                    if not hasattr(Utils, method_name):
+                        Out.yellow("site url has invalid method name:"
+                                   " ({}) {}".format(site_name, method_name))
+                        is_url_valid = False
+                        break
+
+                    replace_fn = getattr(Utils, method_name)
+                    search_url = search_url.replace(m[0], replace_fn(keyword))
+                if not is_url_valid:
+                    continue
+
             try:
                 action_type = \
                     self._config["CONTENT INFO"]["site_content_action"]
@@ -424,7 +459,7 @@ class SampleCMD:
                         format(site, site_content_type))
                 continue
 
-            if type(request.content) == bytes:
+            if isinstance(request.content, bytes):
                 content = request.content.decode()
             else:
                 content = request.content

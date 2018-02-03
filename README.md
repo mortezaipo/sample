@@ -81,7 +81,7 @@ enable = yes
 # General site info
 site_name = CommandLineFu
 site_url = http://www.commandlinefu.com/
-site_search_url = http://www.commandlinefu.com/commands/tagged/163/{}/json
+site_search_url = http://www.commandlinefu.com/commands/matching/{0}/base64({0})/json
 
 [CONTENT INFO]
 # Site content type (html or json)
@@ -100,6 +100,8 @@ description =
 
 > **NOTE:** if your sites returns HTML, then fill `CONTENT PATTERN` section with xpath format, otherwise if it returns JSON, then fill this section with JSON key names.
 
+If you want to call extra function in your url, just put your function name in it like `commandlinefu` configuration file 
+and implement your function as a `staticmethod` in `Utils` class.
 
 ### Contribute
 If you know a website or a service which provide sample commands, kindly keep me in touch, I will update 
