@@ -424,7 +424,12 @@ class SampleCMD:
                         format(site, site_content_type))
                 continue
 
-            if not parser_obj.parse_content(request.content):
+            if type(request.content()) == bytes:
+                content = request.content().decode()
+            else:
+                content = request.content()
+
+            if not parser_obj.parse_content(content):
                 Out.yellow("invalid site content: ({})".format(site))
 
             t_result = parser_obj.find(parent_p, title_p,
