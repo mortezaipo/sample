@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="samplecmd",
-    version="1.1.0",
+    version="1.1.1",
     description="SampleCMD is a CLI application which prepares sample "
                 "commands for users based on search words.",
     author="Morteza Nourelahi Alamdari",

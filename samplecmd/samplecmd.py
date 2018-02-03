@@ -505,9 +505,9 @@ def main() -> None:
     ap.add_argument('-r',
                     action="store_true",
                     help="Show commands source links")
-    ap.add_argument('--version',
-                    action="store_true",
-                    help="Show version")
+    # ap.add_argument('--version',
+    #                 action="store_true",
+    #                 help="Show version")
     ap.add_argument('-l',
                     default="5",
                     type=int,
