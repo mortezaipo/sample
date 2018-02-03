@@ -424,10 +424,10 @@ class SampleCMD:
                         format(site, site_content_type))
                 continue
 
-            if type(request.content()) == bytes:
-                content = request.content().decode()
+            if type(request.content) == bytes:
+                content = request.content.decode()
             else:
-                content = request.content()
+                content = request.content
 
             if not parser_obj.parse_content(content):
                 Out.yellow("invalid site content: ({})".format(site))
