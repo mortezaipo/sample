@@ -28,7 +28,10 @@ import json
 import base64
 import re
 from glob import glob
-from json.decoder import JSONDecodeError
+try:
+    from json.decoder import JSONDecodeError
+except ImportError:  # python3.4
+    JSONDecodeError = ValueError
 from configparser import ConfigParser, MissingSectionHeaderError, ParsingError
 
 import requests
