@@ -19,7 +19,7 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
-        "License :: OSI Approved :: GPL-v3",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: POSIX",
         "Operating System :: POSIX :: Linux",
         "Operating System :: MacOS :: MacOS X",
