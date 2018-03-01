@@ -6,25 +6,28 @@ Install
 =======
 
 .. code-block:: shell
+
     $ pip install samplecmd
 
-
 ..
+
     **NOTE:** this project developed for `python3`.
+
 
 Example
 =======
 
 .. code-block:: shell
+
     $ samplecmd grep -l 2
 
 
 Result:
 
-> 1: Show files containing "foo" and "bar" and "baz"
-     grep -l 'baz' $(grep -l 'bar' $(grep -lr 'foo' *) )
-> 2: Search git logs (case-insensitive)
-     git log -i --grep='needle'
+>>> 1: Show files containing "foo" and "bar" and "baz"
+       grep -l 'baz' $(grep -l 'bar' $(grep -lr 'foo' *) )
+>>> 2: Search git logs (case-insensitive)
+       git log -i --grep='needle'
 
 
 Arguments
@@ -42,10 +45,12 @@ Command input structure: `samplecmd <COMMAND NAME> [EXTRA OPTIONS]`
 | Limit results            | -l       | number |
 +--------------------------+----------+--------+
 
-### Add Extra Sites
+Add Extra Sites
+===============
 To add extra sites, just do these steps:
 
 .. code-block:: shell
+
     $ mkdir ~/.samplecmd/sites/ -p
 
 
@@ -54,6 +59,7 @@ Then create your site file with `.ini` extension and fill required variables.
 This is configuration file of `BashOneLiners` site (HTML):
 
 .. code-block:: ini
+
     [GENERAL]
     # Enable to be search
     enable = yes
@@ -81,6 +87,7 @@ This is configuration file of `BashOneLiners` site (HTML):
 This is configuration file of of `CommandLineFu` site (JSON):
 
 .. code-block:: ini
+
     [GENERAL]
     # Enable to be search
     enable = yes
@@ -107,6 +114,7 @@ This is configuration file of of `CommandLineFu` site (JSON):
 
 
 ..
+
     **NOTE:** if your sites returns HTML, then fill `CONTENT PATTERN` section with xpath format, otherwise if it returns JSON, then fill this section with JSON key names.
 
 If you want to call extra function in your url, just put your function name in it like `commandlinefu` configuration file 
