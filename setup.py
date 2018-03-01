@@ -19,9 +19,6 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
-        "Environment :: Linux",
-        "Environment :: MacOS X",
-        "Environment :: Win32 (MS Windows)",
         "License :: OSI Approved :: GPL-v3",
         "Operating System :: POSIX",
         "Operating System :: POSIX :: Linux",
@@ -32,6 +29,11 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Topic :: Terminals",
+        "Intended Audience :: System Administrators",
+        "Intended Audience :: Information Technology",
+        "Intended Audience :: End Users/Desktop",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Other Audience",
     ],
     entry_points={
         "console_scripts": [
