@@ -1,6 +1,7 @@
 samplecmd
 =========
-Prepare sample command usages
+SampleCMD is a CLI application which prepares sample commands for users based on search words.
+
 
 Install
 =======
