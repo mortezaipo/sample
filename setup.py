@@ -17,7 +17,7 @@ setup(
     include_package_data=True,
     python_requires='>=3',
     classifiers=[
-        "Development Status :: Production/Stable",
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
         "Environment :: Linux",
         "Environment :: MacOS X",
